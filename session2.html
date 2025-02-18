@@ -449,22 +449,100 @@
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <p>Below are some questions to recap and apply central concepts of the second session. Please try answer them for yourself.
-Further, exercises to familiarize yourself with Bayesian approaches of cognitive modeling.</p>
+Further, exercises to familiarize yourself with theoretically-informed approaches of cognitive modeling.</p>
 <blockquote>
 <div><p><strong><span style=&ldquo;color:#D83D2B;&rdquo;>Exercise 2.1.: What are cognitive architectures?</span></strong></p>
 <ol class="arabic simple">
-<li><p>What is the difference between a cognitive architecture and the BDI model?</p></li>
+<li><p>What are the advantages and limitations of structured representations and a structured architecture? Name and briefly explain at least two advantages and disadvantages for each.</p></li>
+<li><p>What is the conceptual difference between a cognitive architecture and the BDI model?</p></li>
 <li><p>Consider the core modules of cognitive architectures: different types of memory, perception, motor modules, attention, action selection, learning. Which of these can one map onto aspects of LLMs? Map and explain briefly.</p></li>
-<li><p>Compare the cognitive cycle described in the standard model and the implementation of Generative Agents.</p></li>
-<li></li>
+<li><p>Compare the cognitive cycle described in the standard model and the architecture of Generative Agents. Which components match, which are missing or differ?</p></li>
+<li><p>Do you consider the Generative Agents architecture a better simulator of human behavior that an LLM only? Name and briefly explain two arguments.</p></li>
+<li><p>The Standard Model formalizes bounded rationality rather than fully optimal cognition. What would speak in favor, would would speak against having boundedly rational artificial agents, if they were a part of human every day life? Name one argument each.</p></li>
 </ol>
 </div></blockquote>
 <blockquote>
 <div><p><strong><span style=&ldquo;color:#D83D2B;&rdquo;>Exercise 1.2.: Aspects of cognitive architectures</span></strong></p>
 <ol class="arabic simple">
-<li><p>One of the modules in cognitive architectures is perception, which interacts with memory. Core functionality of these subprocesses in human cogntion is categorization, i.e., assigning discrete categories to perceived stimuli, based on our knowledge (memory) of different categories. While ML models are highly accurate at categorization tasks, they need large amounts of training data that is implausible from a cognitive perspective. Please follow <a class="reference external" href="https://alanjern.github.io/computational-psych-book/04-categorization.html">this tutorial</a> to see an example of a model from cognitive psychology where categorization happens based on a smaller number of examples.</p></li>
+<li><p>One of the modules in cognitive architectures is perception, which interacts with memory. One core functionality of these subprocesses in human cogntion is categorization, i.e., assigning discrete categories to perceived stimuli, based on our knowledge (memory) of different categories. While ML models are highly accurate at categorization tasks, they need large amounts of training data that is implausible from a cognitive perspective. Please follow <a class="reference external" href="https://alanjern.github.io/computational-psych-book/04-categorization.html">this tutorial</a> to see an example of a model from cognitive psychology where categorization happens based on a smaller number of examples.</p></li>
+</ol>
+<p>a. What is the categorization “criterion” that is used?
+b. What do you think are strengths and limitations of this model?</p>
+<ol class="arabic simple" start="2">
+<li><p>Selection of relevant aspects to remember is one of the most difficult aspects of building models that reliably interact with the complex real world. Re-using the code and LLM from session 1, compare different approaches to scoring the relevance of different observations of the environment. Your task is to compare these approaches to the relevance scoring used in the Generative Agents architecture (see prompt on slides). The different approaches are roughly described, but you need to formulate the respective prompts. Feel free to play around with the set of observations, too. Do you see differences depedning on scoring? Do the results conform your intuitions?</p></li>
 </ol>
 </div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;Qwen/Qwen2.5-7B-Instruct&quot;</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="p">,</span>
+    <span class="n">torch_dtype</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">device_map</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">load_in_4bit</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### environment set up: ####</span>
+<span class="c1"># set of observations</span>
+<span class="n">observations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;It&#39;s sunny outside.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;You saw a big rock fall from the sky.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;You saw a tiny dog in front of your house.&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;You met your best friend today.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;You met your partner whom you haven&#39;t seen for a long time.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;You found your high school diploma.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;You ate cereal for lunch.&quot;</span>
+<span class="p">]</span>
+<span class="c1"># current memory</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;You have a college diploma.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;You live in a small town.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;You have a cat.&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Approach 1: relevance of remembering is based on similarity of current memories and the observation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Approach 2: relevance is based on importance of the observation for generalization, success in the future -- </span>
+<span class="c1"># e.g., could roughly approximated by expected number of situations which might rely on this knowledge</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Approach 3: relevance scoring prompting from Generative agents</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Approach 4 (more advanced): multi-step prompting: rate relevance following generative agents, and also unexpectedness of the observation</span>
+<span class="c1"># in two separate LM calls and then rate overall retention score based on the predicted scores </span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

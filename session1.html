@@ -467,6 +467,58 @@ Further, exercises to familiarize yourself with using the university compute and
 <li><p>What are some differences between human goals and the goals of a vacuuming robot? Name two.</p></li>
 </ol>
 </div></blockquote>
+<p>Click below to see suggested solutions. Note that these and all other solutions are by no means exhaustive or the only right answer.</p>
+<div class="toggle docutils container">
+<ol class="arabic simple">
+<li><p>What properties (supplied by different definitions) does a thermostat have that could be considered properties of an agent?</p>
+<ol class="arabic simple">
+<li><p>reactivity (to changes in environment, output respectively)</p></li>
+<li><p>autonomy within the task of keeping temperature constant</p></li>
+<li><p>arguably, has intention / goal of keeping the temperature constant</p></li>
+<li><p>representation of the state of the world (i.e., current temperature)</p></li>
+</ol>
+</li>
+<li><p>Consider a travel planning agent that has access to a traveling database and interacts with users via natural language. Provide a
+description of the agent using the BDI framework.</p>
+<ol class="arabic simple">
+<li><p>beliefs: database of travel information, text query provided by the user</p></li>
+<li><p>world knowledge needed; DB has to be uptodate and complete</p></li>
+<li><p>desire: finding satisfactory answer that will elicit some done-signal from user, or e.g. booking a trip</p></li>
+<li><p>intention: e.g. refine user query, search the database to satisfy request, loop over communicating to user when no further steps can be taken and search databse again</p></li>
+<li><p>NLU / NLG module might be seen as a mechanism that leads to belief updating</p></li>
+</ol>
+</li>
+<li><p>Which of the following entities do you think should be described with intentional terms? Why? Swarm of bees, a vacuuming robot, a
+three-year-old child</p>
+<ol class="arabic simple">
+<li><p>three year old child → yes, has creative goals and play, goal-directed actions</p></li>
+<li><p>vacuuming robot → can be, but maybe not necessary b/c mechanistic description suffices (narrow task)</p></li>
+<li><p>swarm of bees → maybe not necessary, but nonetheless one could use intentional terms as they are considered intelligent entities under different views of intelligence (collective intelligence view: goal-directed behavior, reactive, rationality, some knowledge representation (e.g., where flowers are), swarm decides where to go and build things; individual view: focused on survival, but no individual complex decision making / reasoning)</p></li>
+</ol>
+</li>
+<li><p>Assign the reasoning type that might be predominantly employed to solve each of the following problems. Briefly explain your choices.</p>
+<ul class="simple">
+<li><p>Solving a legal case (S2)</p></li>
+<li><p>choosing which car to buy (S2)</p></li>
+<li><p>reading a tweet (S1)</p></li>
+<li><p>choosing which chocolate to buy (S1, but could also be S2)</p></li>
+<li><p>parking a car (S1 if proficient or easy situation, S2 otherwise)</p></li>
+<li><p>replying to a friend when they sneezed (S1, maybe S2 if foreign language)</p></li>
+</ul>
+</li>
+<li><p>Why is knowledge required for taking goal-directed actions? Explain in 2-3 sentences.</p>
+<ol class="arabic simple">
+<li><p>knowledge as basis for reasoning in various forms; even S1-based actions are formed on the basis of some for of experiences, learned</p></li>
+</ol>
+</li>
+<li><p>What are some differences between human goals and the goals of a vacuuming robot? Name two.</p>
+<ol class="arabic simple">
+<li><p>robot: specified by developers, humans: self-imposed</p></li>
+<li><p>robot: strictly utility maximizing, no distinction b/w short and long term, humans: might pursue goals that are useful in the sense of abstraction and intrinsic reward, or expected reward for long-term goals</p></li>
+</ol>
+</li>
+</ol>
+</div>
 <section id="using-bwjupyter">
 <h3>Using bwJupyter<a class="headerlink" href="#using-bwjupyter" title="Link to this heading">#</a></h3>
 <p>If you signed up for accessing compute provided through the KIT university, the following steps should guide you through accessing their Jupyter server. If you did not sign up for access, you can launch this notebook in Google Colab by clicking the rocket icon &gt; Colab at the top of this page.</p>

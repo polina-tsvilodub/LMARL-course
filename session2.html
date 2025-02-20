@@ -463,6 +463,59 @@ Further, exercises to familiarize yourself with theoretically-informed approache
 <li><p>The Standard Model formalizes bounded rationality rather than fully optimal cognition. What would speak in favor, would would speak against having boundedly rational artificial agents, if they were a part of human every day life? Name one argument each.</p></li>
 </ol>
 </div></blockquote>
+<p>Click below to see suggested solutions.</p>
+<div class="toggle docutils container">
+<ol class="arabic simple">
+<li><p>What are the advantages and limitations of structured representations and a structured architecture? Name and briefly explain at least two advantages and disadvantages for each.</p>
+<ol class="arabic simple">
+<li><p>structured representations: + relations can be defined + interpretable representation - inflexible for definition, limited expressiveness (difficult conversion from real world signals) - inflexible structure (not allowing probabilistic notions, gradedness)</p></li>
+<li><p>structured architecture: + transparency + potential human-likeness - the bitter lesson - difficulty of building - task specificity</p></li>
+</ol>
+</li>
+<li><p>What is the conceptual difference between a cognitive architecture and the BDI model?</p>
+<ol class="arabic simple">
+<li><p>CA is a functional formalization of the human mind (more abstract)</p></li>
+<li><p>BDI is a concrete model; more of a property-based description</p></li>
+</ol>
+</li>
+<li><p>Consider the core modules of cognitive architectures: different types of memory, perception, motor modules, attention, action selection, learning. Which of these can one map onto aspects of LLMs? Map and explain briefly.</p>
+<ol class="arabic simple">
+<li><p>long-term memory: might be compared to in-weight stored information (however, procedural, semantic etc are all represented in the same way); however, it cannot be updated without re-training</p></li>
+<li><p>short-term memory / working memory: maybe in-context information</p></li>
+<li><p>perception: maybe encoded information from user input, but arguably no default grouping / categorization happens</p></li>
+<li><p>motor modules: none</p></li>
+<li><p>attention: attention in transformers</p></li>
+<li><p>action selection: predicting the next token (WTA / probabilistic selection)</p></li>
+<li><p>learning — see memory</p></li>
+</ol>
+</li>
+<li><p>Compare the cognitive cycle described in the standard model and the architecture of Generative Agents. Which components match, which are missing or differ?</p>
+<ol class="arabic simple">
+<li><p>cognitive cycle: “… driven by procedural memory. In each cycle, procedural memory tests the contents of working memory and selects an action that modifies working memory. These modifications can lead to further actions retrieved from procedural memory, or they can initiate operations in other modules, such as motor action, memory retrieval, or perceptual acquisition, whose results will in turn be deposited back in working memory.””</p></li>
+<li><p>Generative agents: action selection based on memory, but rather “long-term memory contents” in-weight; although implementation is arguably working-memory style where the currently constructed prompt is the working memory. However, action does not directly modify the working memory, but goes through the effect on environment, and loop of reflection, planning</p></li>
+</ol>
+</li>
+<li><p>Do you consider the Generative Agents architecture a better simulator of human behavior that an LLM only? Name and briefly explain two arguments.</p>
+<ol class="arabic simple">
+<li><p>works more accurately on a behavioral level (better performance)</p></li>
+<li><p>more structure known from humans → potentially more human-likeness, but it assumes that there is a causal connection between the structure of the agent and the actual behavioral outputs (rather than spurious correlations)</p></li>
+<li><p>note: for pure behavioral simulation rather than <em>explanation</em> the functional architecture of the simulator might actually irrelevant</p></li>
+</ol>
+</li>
+<li><p>The Standard Model formalizes bounded rationality rather than fully optimal cognition. What would speak in favor, would would speak against having boundedly rational artificial agents, if they were a part of human every day life? Name one argument each.</p>
+<ul class="simple">
+<li><ul>
+<li><p>human-likeness → naturalness of interaction</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>we might want that the artificial systems are safer, better than humans on certain applications</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
 <blockquote>
 <div><p><strong><span style=&ldquo;color:#D83D2B;&rdquo;>Exercise 2.2.: Aspects of cognitive architectures</span></strong></p>
 <ol class="arabic simple">

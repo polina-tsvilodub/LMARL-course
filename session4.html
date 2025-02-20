@@ -408,9 +408,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -426,14 +424,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -448,8 +438,8 @@
 <p>This session will provide an overview of LLM agents and approaches to neuro-symbolic AI, bringing together the topics from the previous days.</p>
 <p>Slides from the fourth lecture can be found <a class="reference external" href="https://github.com/polina-tsvilodub/LMARL-course/tree/main/lmarl-course/slides/session4.pdf">here</a>.</p>
 <p>The discussion of the day will be on the paper by <a class="reference external" href="https://arxiv.org/abs/2210.03629">Yao et al. (2023). ReAct: Synergizing reasoning and acting in language models</a>.</p>
-<section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><strong><span style=&ldquo;color:#D83D2B;&rdquo;>Exercise 4.1.: LLM agents &amp; NeSy architectures</span></strong></p>
 <ol class="arabic simple">
 <li><p>Do you think that LLM agents in the sense in which they were discussed today are agents (according to definitions and properties form day 1)? Why (not)?</p></li>
 <li><p>Do you think applications that are called LLM agents need to be agentic?</p></li>
@@ -458,7 +448,17 @@
 <li><p>What is the difference between an LLM agent and a few-shot prompted (vanilla) LLM?</p></li>
 <li><p>For which tasks do you think would the ReAct prompting strategy work (not) well? Name one example each.</p></li>
 </ol>
-</section>
+</div></blockquote>
+<blockquote>
+<div><p><strong><span style=&ldquo;color:#D83D2B;&rdquo;>Exercise 4.2.: Conceptualizing and LLM agent</span></strong></p>
+<p>In the following, your task is to conceptualize the structure of a system (agent) designed for a specific task. Please describe the structure of your system in words, or pseudo-code, or a box-and-arrow diagram.</p>
+<p>Your task is to write a step-by-step guide / blueprint for an LLM based agent that will put all important appointments from your email to your Google Calendar, but will filter out spam appointments from emails from your former school. The agent should make sure there are no scheduling conflicts, and inform the user if there are conflicts.</p>
+<p>Your agent can be equipped with the following <strong>tools</strong>: interface to your email (accessing new incoming emails, writing emails), standard LLM calls to a model of your choice which will follow your prompts, access to your calendar (read and write).</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong><span style=&ldquo;color:#D83D2B;&rdquo;>Exercise 4.3.: Using LangChain</span></strong></p>
+<p>For a basic example of how to use langchain, see the exercise sheet <a class="reference external" href="https://cogsciprag.github.io/Understanding-LLMs-course/tutorials/05a-agents.html">here</a>. Note that part of the code involve using API keys for different LLMs, so it might rather be useful as a conceptual example starting point. There are exercises with opne-source models accessed through HuggingFace, too. Disclaimer: since the sheet is from a few months ago and Langchain is under active development, some things might be deprecated.</p>
+</div></blockquote>
 </section>
 
     <script type="text/x-thebe-config">
@@ -506,22 +506,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
